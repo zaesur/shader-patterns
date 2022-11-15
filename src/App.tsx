@@ -3,8 +3,8 @@ import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience";
 
 import "./App.css";
-import vertexShader from "./shaders/pattern_5/vertex.glsl";
-import fragmentShader from "./shaders/pattern_5/fragment.glsl";
+import vertexShader from "./shaders/pattern_06/vertex.glsl";
+import fragmentShader from "./shaders/pattern_06/fragment.glsl";
 
 const current = {
   vertexShader,
