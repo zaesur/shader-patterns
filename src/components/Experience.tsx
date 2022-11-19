@@ -17,7 +17,7 @@ const Experience: FunctionComponent<ExperienceProps> = ({ children }) => {
         near={0.01}
         position={[0.25, -0.25, 1]}
       />
-      <OrbitControls enableDamping />
+      <OrbitControls enableDamping enablePan={false} />
       {children}
     </Canvas>
   );
