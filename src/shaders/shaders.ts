@@ -1,4 +1,4 @@
-export default Object.entries<{ default: string }>(
+const shaders = Object.entries<{ default: string }>(
   import.meta.glob("./**/*.glsl", { eager: true })
 ).reduce<Record<string, { vertexShader: string; fragmentShader: string }>>(
   (shaders, [moduleName, moduleContent]) => {
@@ -20,3 +20,6 @@ export default Object.entries<{ default: string }>(
   },
   {}
 );
+
+export const shaderNames = Object.keys(shaders);
+export default shaders;

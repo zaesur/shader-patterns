@@ -1,41 +1,33 @@
-import Experience from "./components/Experience";
-import shaders from "./shaders/shaders";
-import Model from "./components/Model";
-
-import "./App.css";
 import { useState } from "react";
+import Experience from "./components/Experience";
+import shaders, { shaderNames } from "./shaders/shaders";
+import Model from "./components/Model";
+import "./App.css";
+import Preview from "./components/ShaderPreview";
+import ShaderControl from "./components/ShaderControl";
 
 function App() {
   const [shaderChoice, setShaderChoice] = useState("test");
 
-  console.log(shaders[shaderChoice].fragmentShader);
-
   return (
     <div className="gui">
       <div className="control">
-        <label>
-          Select a shader:
-          <select
-            value={shaderChoice}
-            onChange={(event) => setShaderChoice(event.target.value)}
-          >
-            {Object.keys(shaders).map((name) => (
-              <option value={name} key={name}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </label>
+        <ShaderControl
+          label="Select a shader: "
+          values={shaderNames}
+          initialValue={shaderChoice}
+          onSelect={setShaderChoice}
+        />
 
         <section>
-          <h1>Vertex shader</h1>
-          <code>
-            <pre>{shaders[shaderChoice].vertexShader}</pre>
-          </code>
-          <h1>Fragment shader</h1>
-          <code>
-            <pre>{shaders[shaderChoice].fragmentShader}</pre>
-          </code>
+          <Preview
+            name="Vertex shader"
+            code={shaders[shaderChoice].vertexShader}
+          />
+          <Preview
+            name="Fragment shader"
+            code={shaders[shaderChoice].fragmentShader}
+          />
         </section>
       </div>
 
