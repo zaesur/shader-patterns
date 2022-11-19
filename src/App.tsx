@@ -8,11 +8,13 @@ import { useState } from "react";
 function App() {
   const [shaderChoice, setShaderChoice] = useState("test");
 
+  console.log(shaders[shaderChoice].fragmentShader);
+
   return (
     <div className="gui">
       <div className="control">
         <label>
-          {"Select a shader: "}
+          Select a shader:
           <select
             value={shaderChoice}
             onChange={(event) => setShaderChoice(event.target.value)}
@@ -24,8 +26,19 @@ function App() {
             ))}
           </select>
         </label>
+
+        <section>
+          <h1>Vertex shader</h1>
+          <code>
+            <pre>{shaders[shaderChoice].vertexShader}</pre>
+          </code>
+          <h1>Fragment shader</h1>
+          <code>
+            <pre>{shaders[shaderChoice].fragmentShader}</pre>
+          </code>
+        </section>
       </div>
-      
+
       <Experience>
         <Model shaderChoice={shaderChoice} />
       </Experience>
