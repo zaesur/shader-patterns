@@ -7,7 +7,6 @@ interface ExperienceProps {
 }
 
 const Model: FunctionComponent<ExperienceProps> = ({ shaderChoice }) => {
-
   return (
     <mesh>
       <planeGeometry args={[1, 1, 32, 32]} />
