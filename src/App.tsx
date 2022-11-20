@@ -2,38 +2,38 @@ import { useState } from "react";
 import Experience from "./components/Experience";
 import shaders, { shaderNames } from "./shaders/shaders";
 import Model from "./components/Model";
-import "./App.css";
-import Preview from "./components/ShaderPreview";
-import ShaderControl from "./components/ShaderControl";
+import ShaderCodePreview from "./components/ShaderCodePreview";
+import ShaderSelect from "./components/ShaderSelect";
+import styles from "./App.module.css";
 
 function App() {
   const [shaderChoice, setShaderChoice] = useState("test");
 
   return (
-    <div className="gui">
-      <div className="control">
-        <ShaderControl
+    <div className={styles.gui}>
+      <div className={styles.control}>
+        <ShaderSelect
           label="Select a shader: "
           values={shaderNames}
           initialValue={shaderChoice}
           onSelect={setShaderChoice}
         />
 
-        <section>
-          <Preview
-            name="Vertex shader"
-            code={shaders[shaderChoice].vertexShader}
-          />
-          <Preview
-            name="Fragment shader"
-            code={shaders[shaderChoice].fragmentShader}
-          />
-        </section>
+        <ShaderCodePreview
+          name="Vertex shader"
+          code={shaders[shaderChoice].vertexShader}
+        />
+        <ShaderCodePreview
+          name="Fragment shader"
+          code={shaders[shaderChoice].fragmentShader}
+        />
       </div>
 
-      <Experience>
-        <Model shaderChoice={shaderChoice} />
-      </Experience>
+      <div className={styles.experience}>
+        <Experience>
+          <Model shaderChoice={shaderChoice} />
+        </Experience>
+      </div>
     </div>
   );
 }

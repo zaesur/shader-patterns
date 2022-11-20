@@ -1,13 +1,13 @@
 import { FunctionComponent } from "react";
 
-interface ShaderControlProps {
+interface ShaderSelectProps {
   label: string;
   initialValue: string;
   values: Array<string>;
   onSelect: (value: string) => void;
 }
 
-const ShaderControl: FunctionComponent<ShaderControlProps> = ({
+const ShaderSelect: FunctionComponent<ShaderSelectProps> = ({
   label,
   initialValue,
   values,
@@ -30,4 +30,4 @@ const ShaderControl: FunctionComponent<ShaderControlProps> = ({
   );
 };
 
-export default ShaderControl;
+export default ShaderSelect;
